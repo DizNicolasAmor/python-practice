@@ -91,7 +91,7 @@ print("\t" + str(get_min_from_list(simple_dictionary) == None) + ": should retur
 print("\n  3. create a function which accepts a number and a string (as keyworded arguments only) and prints this string several times (defined by the number)\n")
 
 def repeat_string(num_times, initial_string):
-    if type (num_times) is not int:
+    if type(num_times) is not int:
         return
     if type(initial_string) is not str:
         return
@@ -128,7 +128,43 @@ print("\t" + str(repeat_string(1, simple_set) == None) + ": should return None w
 print("\t" + str(repeat_string(1, simple_dictionary) == None) + ": should return None when initial_string is a dictionary")
 
 
-print("\n  4. create a function which accepts a number which defines if this number could be described as sum of 3's and 5's in any variations (example: f(3) -> True, f(13) -> True, f(4) -> False)")
+print("\n  4. create a function which accepts a number which defines if this number could be described as sum of 3's and 5's in any variations (example: f(3) -> True, f(13) -> True, f(4) -> False)\n")
+
+def is_number_a_sum_of_three_and_five(current_number):
+    if type(current_number) is float:
+        return False
+    if type(current_number) is not int:
+        return
+
+    aux = 0
+
+    while aux*5 < current_number:
+        if (current_number - (aux * 3)) % 5 == 0:
+            return True
+        if (current_number - (aux * 5)) % 3 == 0:
+            return True
+        aux += 1
+
+    return False
+
+print("\tTests:\n")
+
+print("\t" + str(is_number_a_sum_of_three_and_five(0) == False) + ": should return False when param is 0")
+print("\t" + str(is_number_a_sum_of_three_and_five(1) == False) + ": should return False when param is 1")
+print("\t" + str(is_number_a_sum_of_three_and_five(7) == False) + ": should return False when param is 7")
+print("\t" + str(is_number_a_sum_of_three_and_five(11) == True) + ": should return True when param is 11")
+print("\t" + str(is_number_a_sum_of_three_and_five(12) == True) + ": should return True when param is 12")
+print("\t" + str(is_number_a_sum_of_three_and_five(13) == True) + ": should return True when param is 13")
+print("\t" + str(is_number_a_sum_of_three_and_five(30) == True) + ": should return True when param is 30")
+print("\t" + str(is_number_a_sum_of_three_and_five(50) == True) + ": should return True when param is 50")
+print("\t" + str(is_number_a_sum_of_three_and_five(52) == True) + ": should return True when param is 52")
+print("\t" + str(is_number_a_sum_of_three_and_five(-1) == False) + ": should return False when param is a negative int")
+print("\t" + str(is_number_a_sum_of_three_and_five(2.5) == False) + ": should return False when param is a Float")
+print("\t" + str(is_number_a_sum_of_three_and_five(simple_string) == None) + ": should return None when param is a string")
+print("\t" + str(is_number_a_sum_of_three_and_five(simple_boolean) == None) + ": should return None when param is a boolean")
+print("\t" + str(is_number_a_sum_of_three_and_five(simple_tuple) == None) + ": should return None when param is a tuple")
+print("\t" + str(is_number_a_sum_of_three_and_five(simple_set) == None) + ": should return None when param is a set")
+print("\t" + str(is_number_a_sum_of_three_and_five(simple_dictionary) == None) + ": should return None when param is a dictionary")
 
 print('\nGENERATORS:\n')
 
