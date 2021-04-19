@@ -1,4 +1,4 @@
-from decimal import (Decimal, getcontext)
+from decimal import (Decimal, localcontext)
 
 print('\nPYTHON_EXERCISES_01\n')
 
@@ -22,16 +22,17 @@ simple_set = {1, 2}
 simple_dictionary = {'a': 1, 'b': 2}
 
 def get_sum_from_list(current_list):
-    getcontext().prec = 2
-    if not isinstance(current_list, list):
-        return
-    acc = 0
-    for element in current_list:
-        try:
-            acc += Decimal(element)
-        except:
+    with localcontext() as ctx:
+        ctx.prec  = 2
+        if not isinstance(current_list, (list, tuple, set)):
             return
-    return Decimal(acc)
+        acc = 0
+        for element in current_list:
+            try:
+                acc += Decimal(element)
+            except:
+                return
+        return Decimal(acc)
 
 print("\tTests:\n")
 
@@ -46,8 +47,8 @@ print("\t" + str(get_sum_from_list(list_with_string_numbers_and_numbers) == Deci
 print("\t" + str(get_sum_from_list(simple_string) == None) + ": should return None when input is a string")
 print("\t" + str(get_sum_from_list(simple_boolean) == None) + ": should return None when input is a boolean")
 print("\t" + str(get_sum_from_list(simple_number) == None) + ": should return None when input is a number")
-print("\t" + str(get_sum_from_list(simple_tuple) == None) + ": should return None when input is a tuple")
-print("\t" + str(get_sum_from_list(simple_set) == None) + ": should return None when input is a set")
+print("\t" + str(get_sum_from_list(simple_tuple) == 3) + ": should return correct value when input is a tuple")
+print("\t" + str(get_sum_from_list(simple_set) == 3) + ": should return correct value when input is a set")
 print("\t" + str(get_sum_from_list(simple_dictionary) == None) + ": should return None when input is a dictionary")
 
 
