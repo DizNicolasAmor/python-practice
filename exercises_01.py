@@ -55,7 +55,7 @@ print("\t" + str(get_sum_from_list(simple_dictionary) == None) + ": should retur
 print("\n  2. create a function which accepts a list of numbers and returns it's min/max value (using loops not builtin functions).\n")
 
 def get_min_from_list(current_list):
-    if not isinstance(current_list, list):
+    if not isinstance(current_list, (list, tuple, set)):
         return
     if not len(current_list):
         return
@@ -84,8 +84,8 @@ print("\t" + str(get_min_from_list(list_with_string_numbers_and_numbers) == None
 print("\t" + str(get_min_from_list(simple_string) == None) + ": should return None when input is a string")
 print("\t" + str(get_min_from_list(simple_boolean) == None) + ": should return None when input is a boolean")
 print("\t" + str(get_min_from_list(simple_number) == None) + ": should return None when input is a number")
-print("\t" + str(get_min_from_list(simple_tuple) == None) + ": should return None when input is a tuple")
-print("\t" + str(get_min_from_list(simple_set) == None) + ": should return None when input is a set")
+print("\t" + str(get_min_from_list(simple_tuple) == 1) + ": should return correct value when input is a tuple")
+print("\t" + str(get_min_from_list(simple_set) == 1) + ": should return correct value when input is a set")
 print("\t" + str(get_min_from_list(simple_dictionary) == None) + ": should return None when input is a dictionary")
 
 
