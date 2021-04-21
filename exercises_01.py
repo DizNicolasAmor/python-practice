@@ -91,17 +91,14 @@ print("\t" + str(get_min_from_list(simple_dictionary) == None) + ": should retur
 
 print("\n  3. create a function which accepts a number and a string (as keyworded arguments only) and prints this string several times (defined by the number)\n")
 
-def repeat_string(num_times, initial_string):
-    if type(num_times) is not int:
+def repeat_string(*, num_times, initial_string):
+    if not isinstance(num_times, int) or isinstance(num_times, bool):
         return
     if type(initial_string) is not str:
         return
 
-    result = ''
-
-    for i in range(num_times):
-        result += initial_string
-        # print(initial_string) # line commented just for the quick tests
+    result = initial_string * num_times
+    # print(result) # line commented just for the quick tests
 
     return result
 
@@ -111,22 +108,22 @@ string_test_repeated_three_times = 'Hello worldHello worldHello world'
 
 print("\tTests:\n")
 
-print("\t" + str(repeat_string(0, string_test) == '') + ": should return empty string when num_times is 0")
-print("\t" + str(repeat_string(1, string_test) == string_test) + ": should return same string as param when num_tiems is 1")
-print("\t" + str(repeat_string(2, string_test) == string_test_repeated_two_times) + ": should return initial_string twice when num_tiems is 2")
-print("\t" + str(repeat_string(3, string_test) == string_test_repeated_three_times) + ": should return initial_string three times when num_tiems is 3")
-print("\t" + str(repeat_string(simple_string, string_test) == None) + ": should return None when num_times is a string")
-print("\t" + str(repeat_string(simple_boolean, string_test) == None) + ": should return None when num_times is a boolean")
-print("\t" + str(repeat_string(2.5, string_test) == None) + ": should return None when num_times is a float")
-print("\t" + str(repeat_string(simple_tuple, string_test) == None) + ": should return None when num_times is a tuple")
-print("\t" + str(repeat_string(simple_set, string_test) == None) + ": should return None when num_times is a set")
-print("\t" + str(repeat_string(simple_dictionary, string_test) == None) + ": should return None when num_times is a dictionary")
-print("\t" + str(repeat_string(1, 1) == None) + ": should return None when initial_string is a number")
-print("\t" + str(repeat_string(1, simple_boolean) == None) + ": should return None when initial_string is a boolean")
-print("\t" + str(repeat_string(1, 2.5) == None) + ": should return None when initial_string is a float")
-print("\t" + str(repeat_string(1, simple_tuple) == None) + ": should return None when initial_string is a tuple")
-print("\t" + str(repeat_string(1, simple_set) == None) + ": should return None when initial_string is a set")
-print("\t" + str(repeat_string(1, simple_dictionary) == None) + ": should return None when initial_string is a dictionary")
+print("\t" + str(repeat_string(num_times = 0, initial_string = string_test) == '') + ": should return empty string when num_times is 0")
+print("\t" + str(repeat_string(num_times = 1, initial_string = string_test) == string_test) + ": should return same string as param when num_tiems is 1")
+print("\t" + str(repeat_string(num_times = 2, initial_string = string_test) == string_test_repeated_two_times) + ": should return initial_string twice when num_tiems is 2")
+print("\t" + str(repeat_string(num_times = 3, initial_string = string_test) == string_test_repeated_three_times) + ": should return initial_string three times when num_tiems is 3")
+print("\t" + str(repeat_string(num_times = simple_string, initial_string = string_test) == None) + ": should return None when num_times is a string")
+print("\t" + str(repeat_string(num_times = simple_boolean, initial_string = string_test) == None) + ": should return None when num_times is a boolean")
+print("\t" + str(repeat_string(num_times = 2.5, initial_string = string_test) == None) + ": should return None when num_times is a float")
+print("\t" + str(repeat_string(num_times = simple_tuple, initial_string = string_test) == None) + ": should return None when num_times is a tuple")
+print("\t" + str(repeat_string(num_times = simple_set, initial_string = string_test) == None) + ": should return None when num_times is a set")
+print("\t" + str(repeat_string(num_times = simple_dictionary, initial_string = string_test) == None) + ": should return None when num_times is a dictionary")
+print("\t" + str(repeat_string(num_times = 1, initial_string = 1) == None) + ": should return None when initial_string is a number")
+print("\t" + str(repeat_string(num_times = 1, initial_string = simple_boolean) == None) + ": should return None when initial_string is a boolean")
+print("\t" + str(repeat_string(num_times = 1, initial_string = 2.5) == None) + ": should return None when initial_string is a float")
+print("\t" + str(repeat_string(num_times = 1, initial_string = simple_tuple) == None) + ": should return None when initial_string is a tuple")
+print("\t" + str(repeat_string(num_times = 1, initial_string = simple_set) == None) + ": should return None when initial_string is a set")
+print("\t" + str(repeat_string(num_times = 1, initial_string = simple_dictionary) == None) + ": should return None when initial_string is a dictionary")
 
 
 print("\n  4. create a function which accepts a number which defines if this number could be described as sum of 3's and 5's in any variations (example: f(3) -> True, f(13) -> True, f(4) -> False)\n")
