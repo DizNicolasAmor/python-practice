@@ -2,12 +2,16 @@ from decimal import (Decimal, localcontext)
 
 print('\nPYTHON_EXERCISES_01\n')
 
+def quick_test_runner(current_function, test_data_list):
+    print("\tTests:\n")
+    for test in test_data_list:
+        print("\t" + str(current_function(test[0]) == test[1]) + ": should return " + str(test[1]) + " when input is " + str(test[0]))
+
 print('\nFUNCTIONS:\n')
 
 print("\n  1. create a function which accepts a list of numbers and returns it's sum.\n")
 
 empty_list = []
-list_of_int_that_sums_15 = [1, 2, 3, 4, 5]
 list_of_float = [1.0, 2.3, 4.5]
 list_with_invalid_elements = [1, '2', 3, 'Monday']
 list_with_negatives = [1, 3, -10, 4]
@@ -34,22 +38,23 @@ def get_sum_from_list(current_list):
                 return
         return Decimal(acc)
 
-print("\tTests:\n")
+get_sum_from_list_test_data = (
+    (empty_list, 0),
+    ([1, 2, 3, 4, 5], 15),
+    (list_of_float, Decimal('7.8')),
+    (list_with_invalid_elements, None),
+    (list_with_negatives, -2),
+    (list_with_string_numbers, 6),
+    (list_with_string_numbers_and_numbers, Decimal('6.3')),
+    (simple_string, None),
+    (simple_boolean, None),
+    (simple_number, None),
+    (simple_tuple, 3),
+    (simple_set, 3),
+    (simple_dictionary, None),
+)
 
-print("\t" + str(get_sum_from_list(empty_list) == 0) + ": should return 0 if list is empty")
-print("\t" + str(get_sum_from_list(list_of_int_that_sums_15) == 15) + ": should return the sum  of the int list")
-print("\t" + str(get_sum_from_list(list_of_float) == Decimal('7.8')) + ": should return the sum of the float list")
-print("\t" + str(get_sum_from_list(list_with_invalid_elements) == None) + ": should return None when list contains invalid data type")
-print("\t" + str(get_sum_from_list(list_with_negatives) == -2) + ": should handle list with negative int")
-print("\t" + str(get_sum_from_list(list_with_negative_float) == Decimal('6.2')) + ": should handle list with negative float")
-print("\t" + str(get_sum_from_list(list_with_string_numbers) == 6) + ": should handle list with numbers as strings")
-print("\t" + str(get_sum_from_list(list_with_string_numbers_and_numbers) == Decimal('6.3')) + ": should handle list with numbers and string as numbers")
-print("\t" + str(get_sum_from_list(simple_string) == None) + ": should return None when input is a string")
-print("\t" + str(get_sum_from_list(simple_boolean) == None) + ": should return None when input is a boolean")
-print("\t" + str(get_sum_from_list(simple_number) == None) + ": should return None when input is a number")
-print("\t" + str(get_sum_from_list(simple_tuple) == 3) + ": should return correct value when input is a tuple")
-print("\t" + str(get_sum_from_list(simple_set) == 3) + ": should return correct value when input is a set")
-print("\t" + str(get_sum_from_list(simple_dictionary) == None) + ": should return None when input is a dictionary")
+quick_test_runner(get_sum_from_list, get_sum_from_list_test_data)
 
 
 print("\n  2. create a function which accepts a list of numbers and returns it's min/max value (using loops not builtin functions).\n")
@@ -71,22 +76,24 @@ def get_min_from_list(current_list):
 
     return result
 
-print("\tTests:\n")
+get_min_from_list_test_data = (
+    (empty_list, None),
+    ([1, 2, 3, 4, 5], min([1, 2, 3, 4, 5])),
+    (list_of_float, min(list_of_float)),
+    (list_with_invalid_elements, None),
+    (list_with_negatives, min(list_with_negatives)),
+    (list_with_negative_float, min(list_with_negative_float)),
+    (list_with_string_numbers, None),
+    (list_with_string_numbers_and_numbers, None),
+    (simple_string, None),
+    (simple_boolean, None),
+    (simple_number, None),
+    (simple_tuple, 1),
+    (simple_set, 1),
+    (simple_dictionary, None)
+)
 
-print("\t" + str(get_min_from_list(empty_list) == None) + ": should return None if list is empty")
-print("\t" + str(get_min_from_list(list_of_int_that_sums_15) == min(list_of_int_that_sums_15)) + ": should return the min  of the int list")
-print("\t" + str(get_min_from_list(list_of_float) == min(list_of_float)) + ": should return the min of the float list")
-print("\t" + str(get_min_from_list(list_with_invalid_elements) == None) + ": should return None when list contains invalid data type")
-print("\t" + str(get_min_from_list(list_with_negatives) == min(list_with_negatives)) + ": should return min of list with negative ints")
-print("\t" + str(get_min_from_list(list_with_negative_float) == min(list_with_negative_float)) + ": should return min in list with negatives and floats")
-print("\t" + str(get_min_from_list(list_with_string_numbers) == None) + ": should return None if there are numbers as strings")
-print("\t" + str(get_min_from_list(list_with_string_numbers_and_numbers) == None) + ": should return None if there are numbers and numbers as strings")
-print("\t" + str(get_min_from_list(simple_string) == None) + ": should return None when input is a string")
-print("\t" + str(get_min_from_list(simple_boolean) == None) + ": should return None when input is a boolean")
-print("\t" + str(get_min_from_list(simple_number) == None) + ": should return None when input is a number")
-print("\t" + str(get_min_from_list(simple_tuple) == 1) + ": should return correct value when input is a tuple")
-print("\t" + str(get_min_from_list(simple_set) == 1) + ": should return correct value when input is a set")
-print("\t" + str(get_min_from_list(simple_dictionary) == None) + ": should return None when input is a dictionary")
+quick_test_runner(get_min_from_list, get_min_from_list_test_data)
 
 
 print("\n  3. create a function which accepts a number and a string (as keyworded arguments only) and prints this string several times (defined by the number)\n")
