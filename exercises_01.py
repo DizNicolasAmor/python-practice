@@ -152,24 +152,27 @@ def is_number_a_sum_of_three_and_five(current_number):
 
     return False
 
-print("\tTests:\n")
+is_number_a_sum_of_three_and_five_test_data = (
+    (0, False),
+    (1, False),
+    (7, False),
+    (11, True),
+    (12, True),
+    (13, True),
+    (30, True),
+    (50, True),
+    (52, True),
+    (-1, False),
+    (2.5, False),
+    (simple_string, None),
+    (simple_boolean, None),
+    (simple_tuple, None),
+    (simple_set, None),
+    (simple_dictionary, None)
+)
 
-print("\t" + str(is_number_a_sum_of_three_and_five(0) == False) + ": should return False when param is 0")
-print("\t" + str(is_number_a_sum_of_three_and_five(1) == False) + ": should return False when param is 1")
-print("\t" + str(is_number_a_sum_of_three_and_five(7) == False) + ": should return False when param is 7")
-print("\t" + str(is_number_a_sum_of_three_and_five(11) == True) + ": should return True when param is 11")
-print("\t" + str(is_number_a_sum_of_three_and_five(12) == True) + ": should return True when param is 12")
-print("\t" + str(is_number_a_sum_of_three_and_five(13) == True) + ": should return True when param is 13")
-print("\t" + str(is_number_a_sum_of_three_and_five(30) == True) + ": should return True when param is 30")
-print("\t" + str(is_number_a_sum_of_three_and_five(50) == True) + ": should return True when param is 50")
-print("\t" + str(is_number_a_sum_of_three_and_five(52) == True) + ": should return True when param is 52")
-print("\t" + str(is_number_a_sum_of_three_and_five(-1) == False) + ": should return False when param is a negative int")
-print("\t" + str(is_number_a_sum_of_three_and_five(2.5) == False) + ": should return False when param is a Float")
-print("\t" + str(is_number_a_sum_of_three_and_five(simple_string) == None) + ": should return None when param is a string")
-print("\t" + str(is_number_a_sum_of_three_and_five(simple_boolean) == None) + ": should return None when param is a boolean")
-print("\t" + str(is_number_a_sum_of_three_and_five(simple_tuple) == None) + ": should return None when param is a tuple")
-print("\t" + str(is_number_a_sum_of_three_and_five(simple_set) == None) + ": should return None when param is a set")
-print("\t" + str(is_number_a_sum_of_three_and_five(simple_dictionary) == None) + ": should return None when param is a dictionary")
+quick_test_runner(is_number_a_sum_of_three_and_five, is_number_a_sum_of_three_and_five_test_data)
+
 
 print('\nGENERATORS:\n')
 
