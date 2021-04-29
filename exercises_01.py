@@ -181,5 +181,40 @@ quick_test_runner(is_number_a_sum_of_three_and_five, is_number_a_sum_of_three_an
 
 print('\nGENERATORS:\n')
 
-print("\n  5. create a function which accepts an iterable and yields each element of that iterable (in 2 ways)")
+print("\n  5. create a function which accepts an iterable and yields each element of that iterable (in 2 ways)\n")
+
+def yield_iterable_version_1(current_iterable):
+    for item in current_iterable:
+        yield item
+
+def yield_iterable_version_2(current_iterable):
+    yield from current_iterable
+
+def custom_test_yield_iterable(current_function, iterables_test_data):
+    print("\tTests:\n")
+
+    for iterable_data in iterables_test_data:
+        obj = current_function(iterable_data)
+        result = 'True'
+
+        for item in iterable_data:
+            if item != next(obj):
+                result = 'False'
+
+        print("\t" + result + ": should return expected generator when input is " + str(iterable_data))
+    print()
+
+yield_iterable_test_data = (
+    (1, 2, 3),
+    {1, 2, 3},
+    [1, 2, 3],
+    ('a', 'b', 'c'),
+    {'a', 'b', 'c'},
+    ['a', 'b', 'c'],
+)
+
+custom_test_yield_iterable(yield_iterable_version_1, yield_iterable_test_data)
+custom_test_yield_iterable(yield_iterable_version_2, yield_iterable_test_data)
+
+
 print("\n  6. create a function which yields numbers 1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 18, 21... (infinite sequence)")
