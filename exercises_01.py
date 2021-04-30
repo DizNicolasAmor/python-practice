@@ -217,4 +217,27 @@ custom_test_yield_iterable(yield_iterable_version_1, yield_iterable_test_data)
 custom_test_yield_iterable(yield_iterable_version_2, yield_iterable_test_data)
 
 
-print("\n  6. create a function which yields numbers 1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 18, 21... (infinite sequence)")
+print("\n  6. create a function which yields numbers 1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 18, 21... (infinite sequence)\n")
+
+def generate_custom_sequence():
+    distance = 1
+    result = 0
+    steps = 5
+
+    while True:
+        for _ in range(steps):
+            result += distance
+            yield result
+        distance += 1
+
+def test_generate_custom_sequence():
+    print("\tTests:\n")
+    custom_sequence = (1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 18, 21)
+    sequence_instance = generate_custom_sequence()
+
+    for i in range(len(custom_sequence)):
+        current_result = next(sequence_instance)
+        current_status = str(current_result == custom_sequence[i])
+        print("\t" + current_status + ": should return " + str(current_result) + " for iteration # " + str(i + 1))
+
+test_generate_custom_sequence()
